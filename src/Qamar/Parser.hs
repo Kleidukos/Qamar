@@ -19,7 +19,7 @@ data Expr =
   | Subtr Expr Expr
   | Sum   Expr Expr
   | Mult  Expr Expr
-  | Let   Expr Expr
+  | Let   Variable Expr Expr -- ^ Name, Content, Context
   deriving (Eq, Show)
 
 pExpr :: Parser Expr
