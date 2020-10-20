@@ -35,10 +35,10 @@ pInteger :: Parser Expr
 pInteger = QInt <$> lexeme L.decimal
 
 pVariable :: Parser Expr
-pVariable = Let var
+pVariable = Let <$> var
   where
     var :: Parser Expr
-    var = Var <$> T.pack <$> parser
+    var = Var <$> Variable <$> T.pack <$> parser
     parser :: Parser String
     parser = lexeme
       ((:) <$> letterChar <*> many alphaNumChar <?> "variable")
